@@ -16,7 +16,7 @@ export default {
 <style lang="scss">
 .country__header {
   background-color: #fff;
-  min-height: 100px;
+  min-height: 80px;
   padding: 0 20px;
   box-shadow: -1px 3px 3px -3px rgba(166, 161, 161, 1);
   -webkit-box-shadow: -1px 3px 3px -3px rgba(166, 161, 161, 1);
@@ -24,7 +24,7 @@ export default {
   .country__header__items {
     display: flex;
     align-items: center;
-    padding-top: 40px;
+    padding-top: 28px;
     justify-content: space-between;
     max-width: 100%;
     h1 {
