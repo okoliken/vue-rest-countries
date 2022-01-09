@@ -24,7 +24,7 @@ export default {
   align-items: center;
   justify-content: flex-start;
   margin: 30px 20px;
-  height: 55px;
+  height: 50px;
   width: 200px;
   background-color: #fff;
   box-shadow: -1px 3px 3px -3px rgba(166, 161, 161, 1);
