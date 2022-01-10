@@ -23,13 +23,11 @@ export default {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  margin: 30px 20px;
-  height: 50px;
+  margin: 14px 20px;
+  height: 53px;
   width: 200px;
   background-color: #fff;
   box-shadow: -1px 3px 3px -3px rgba(166, 161, 161, 1);
-  -webkit-box-shadow: -1px 3px 3px -3px rgba(166, 161, 161, 1);
-  -moz-box-shadow: -1px 3px 3px -3px rgba(166, 161, 161, 1);
   border-radius: 4px;
   color: #333335;
   &:focus,
@@ -44,6 +42,12 @@ export default {
     outline: none;
     appearance: none;
     border: none;
+  }
+}
+@media (min-width: 480px) {
+  .country-form-select {
+    height: 58px;
+    width: 200px;
   }
 }
 </style>

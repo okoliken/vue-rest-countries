@@ -33,12 +33,10 @@ export default {
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    margin: 30px 20px;
-    height: 55px;
+    margin: 27px 20px;
+    height: 52px;
     background-color: #fff;
     box-shadow: -1px 3px 3px -3px rgba(166, 161, 161, 1);
-    -webkit-box-shadow: -1px 3px 3px -3px rgba(166, 161, 161, 1);
-    -moz-box-shadow: -1px 3px 3px -3px rgba(166, 161, 161, 1);
     border-radius: 4px;
     .country__search__input {
       appearance: none;
@@ -70,14 +68,17 @@ export default {
       display: flex;
       align-items: center;
       justify-content: flex-start;
-      margin: 30px 20px;
-      height: 50px;
-      width: 400px;
+      margin: 45px 20px;
+      height: 58px;
+      width: 440px;
       overflow: hidden;
+      .country__search__input {
+        transform: translateX(55px);
+      }
       .country__search__icon {
         position: absolute;
-        height: 18px;
-        transform: translateX(20px);
+        height: 24px;
+        transform: translateX(23px);
       }
     }
   }

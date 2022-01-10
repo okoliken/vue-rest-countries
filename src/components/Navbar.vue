@@ -19,8 +19,6 @@ export default {
   min-height: 80px;
   padding: 0 20px;
   box-shadow: -1px 3px 3px -3px rgba(166, 161, 161, 1);
-  -webkit-box-shadow: -1px 3px 3px -3px rgba(166, 161, 161, 1);
-  -moz-box-shadow: -1px 3px 3px -3px rgba(166, 161, 161, 1);
   .country__header__items {
     display: flex;
     align-items: center;
@@ -35,7 +33,7 @@ export default {
 @media (min-width: 480px) {
   .country__header {
     background-color: #fff;
-    min-height: 64px;
+    min-height: 76px;
     padding: 0 20px;
     box-shadow: -1px 3px 3px -3px rgba(166, 161, 161, 1);
     -webkit-box-shadow: -1px 3px 3px -3px rgba(166, 161, 161, 1);
@@ -43,11 +41,12 @@ export default {
     .country__header__items {
       display: flex;
       align-items: center;
-      padding-top: 20px;
+      padding-top: 25px;
       justify-content: space-between;
       max-width: 100%;
       h1 {
-        font-size: 20px;
+        font-size: 24px;
+        font-weight: bold;
       }
 
       span {
