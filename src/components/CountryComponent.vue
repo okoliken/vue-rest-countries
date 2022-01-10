@@ -28,7 +28,7 @@ export default {
   border-radius: 5px;
   max-height: 500px;
   box-shadow: -1px 3px 3px -3px rgba(166, 161, 161, 1);
-
+  margin-bottom: 10px;
   .country__flag__con {
     width: 100%;
     img {
