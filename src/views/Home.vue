@@ -2,9 +2,6 @@
   <SearchInputVue />
   <div class="countries__container">
     <CountryComponentVue />
-    <CountryComponentVue />
-    <CountryComponentVue />
-    <CountryComponentVue />
   </div>
 </template>
 
