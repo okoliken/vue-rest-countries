@@ -1,27 +1,47 @@
 <template>
-  <div class="country" v-for="country in countries" :key="country.area">
+  <div class="country" v-for="country in resp" :key="country.area">
     <div class="country__flag__con">
       <img :src="country.flags.png" alt="not found" class="country__flag" />
     </div>
     <div class="country__details">
       <p class="country__name">{{ country.name.common }}</p>
-      <p class="country__population">Population: <span>10000455</span></p>
-      <p class="country__region">Region: <span>10000455</span></p>
-      <p class="country__capital">Capital: <span>10000455</span></p>
+      <p class="country__population">
+        Population: <span>{{ country.population }}</span>
+      </p>
+      <p class="country__region">
+        Region: <span>{{ country.region }}</span>
+      </p>
+      <p class="country__capital">
+        Capital: <span>{{ country.capital }}</span>
+      </p>
     </div>
   </div>
 </template>
 
 <script>
+import axios from "axios";
+import { ref } from "@vue/reactivity";
+
+const getAllCountry = async () => {
+  try {
+    const request = await axios.get("https://restcountries.com/v3.1/all");
+    const data = await request.data;
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
 export default {
   name: "CountryComponent",
-  props: {
-    countries: Array,
+  async setup() {
+    const resp = ref(await getAllCountry());
+
+    return { resp };
   },
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .country {
   background-color: #fff;
   margin: 15px 7px;
@@ -75,7 +95,7 @@ export default {
     max-width: 500px;
     transition: 0.2s ease;
     &:hover {
-      transform: scale(1.1);
+      transform: scale(1.05);
       cursor: pointer;
     }
   }

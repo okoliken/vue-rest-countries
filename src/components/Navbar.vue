@@ -16,7 +16,7 @@ export default {
 <style lang="scss">
 .country__header {
   background-color: #fff;
-  min-height: 80px;
+  min-height: 75px;
   padding: 0 20px;
   box-shadow: -1px 3px 3px -3px rgba(166, 161, 161, 1);
   .country__header__items {
@@ -33,7 +33,7 @@ export default {
 @media (min-width: 480px) {
   .country__header {
     background-color: #fff;
-    min-height: 76px;
+    min-height: 65px;
     padding: 0 20px;
     box-shadow: -1px 3px 3px -3px rgba(166, 161, 161, 1);
     -webkit-box-shadow: -1px 3px 3px -3px rgba(166, 161, 161, 1);
@@ -41,7 +41,7 @@ export default {
     .country__header__items {
       display: flex;
       align-items: center;
-      padding-top: 25px;
+      padding-top: 20px;
       justify-content: space-between;
       max-width: 100%;
       h1 {

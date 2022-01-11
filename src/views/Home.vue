@@ -1,7 +1,14 @@
 <template>
   <SearchInputVue />
   <div class="countries__container">
-    <CountryComponentVue :countries="countries" />
+    <Suspense>
+      <template #default>
+        <CountryComponentVue />
+      </template>
+      <template #fallback>
+        <skeletonVue v-for="i in 250" :key="i" />
+      </template>
+    </Suspense>
   </div>
 </template>
 
@@ -9,29 +16,11 @@
 // @ is an alias to /src
 import SearchInputVue from "../components/SearchInput.vue";
 import CountryComponentVue from "../components/CountryComponent.vue";
-import axios from "axios";
+import skeletonVue from "../components/skeleton.vue";
+
 export default {
   name: "Home",
-  components: { SearchInputVue, CountryComponentVue },
-  data() {
-    return {
-      countries: [],
-    };
-  },
-  methods: {
-    async getAllCountry() {
-      try {
-        const request = await axios.get("https://restcountries.com/v3.1/all");
-        const data = await request.data;
-        this.countries = data;
-      } catch (error) {
-        console.log(error);
-      }
-    },
-  },
-  mounted() {
-    this.getAllCountry();
-  },
+  components: { SearchInputVue, CountryComponentVue, skeletonVue },
 };
 </script>
 
@@ -45,6 +34,7 @@ export default {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
+    transition: display 0.2s ease;
   }
 }
 
@@ -52,6 +42,7 @@ export default {
   .countries__container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    transition: display 0.2s ease;
   }
 }
 
@@ -60,6 +51,7 @@ export default {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     margin: 0 20px;
+    transition: display 0.2s ease;
   }
 }
 </style>
