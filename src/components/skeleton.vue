@@ -68,7 +68,7 @@ export default {
     background-color: #eee;
   }
   50% {
-    background-color: #eaeaea;
+    background-color: rgb(228, 228, 228);
   }
   100% {
     background-color: #eee;
