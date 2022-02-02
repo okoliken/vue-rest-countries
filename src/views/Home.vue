@@ -1,16 +1,23 @@
 <template>
   <SearchInputVue v-model:search="search" v-model:filterregion="filterregion" />
-  <div class="countries__container">
+  <transition-group
+    class="countries__container"
+    tag="div"
+    @before-enter="onBeforeEnter"
+    @enter="onEnter"
+    @leave="onLeave"
+  >
     <template v-if="fetchingData === true">
       <skeletonVue v-for="i in 250" :key="i" />
     </template>
+
     <CountryComponentVue
       v-else
       v-for="(country, index) in filterCountry"
       :country="country"
       :key="index"
     />
-  </div>
+  </transition-group>
 </template>
 
 <script>
@@ -19,6 +26,7 @@ import CountryComponentVue from "../components/CountryComponent.vue";
 import skeletonVue from "../components/skeleton.vue";
 import axios from "axios";
 import { computed } from "vue";
+import gsap from "gsap";
 
 export default {
   name: "Home",
@@ -33,16 +41,20 @@ export default {
   },
   provide() {
     return {
-      countrydata: computed(() =>
-        this.countries.map((country) => country.region)
-      ),
+      countrydata: computed(() => {
+        const uniqueRegions = new Set(
+          this.countries.map((country) => country.region)
+        );
+        const newRegions = Array.from(uniqueRegions).map((region) => region);
+        return newRegions;
+      }),
     };
   },
   computed: {
     filterCountry() {
       return this.countries
         .filter((country) => country.name.common.includes(this.search))
-        .filter((region) => region.name.common.includes(this.filterregion));
+        .filter((regions) => regions.region.includes(this.filterregion));
     },
   },
   methods: {
@@ -54,11 +66,30 @@ export default {
         this.countries = data;
 
         this.fetchingData = false;
-        console.log(data);
       } catch (error) {
         console.log(error);
         this.fetchingData = false;
       }
+    },
+    onBeforeEnter(el) {
+      el.style.opacity = 0;
+      el.style.height = 10;
+    },
+    onEnter(el, done) {
+      gsap.to(el, {
+        opacity: 1,
+        maxHeight: "500px",
+        delay: el.dataset.index * 0.15,
+        onComplete: done,
+      });
+    },
+    onLeave(el, done) {
+      gsap.to(el, {
+        opacity: 0,
+        height: 0,
+        delay: el.dataset.index * 0.15,
+        onComplete: done,
+      });
     },
   },
   mounted() {
@@ -68,15 +99,28 @@ export default {
 </script>
 
 <style>
+.list-move,
+.scale-enter-active,
+.scale-leave-active {
+  transition: all 0.5s ease;
+}
+.scale-enter-from,
+.scale-leave-to {
+  opacity: 0;
+  transform: scale(1.1);
+}
+.scale-leave-active {
+  position: absolute;
+}
 .countries__container {
-  margin: 0 16px;
+  margin: 0 12px;
 }
 
 @media (min-width: 450px) {
   .countries__container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
+    gap: 12px;
     transition: all 0.2s ease;
   }
 }
