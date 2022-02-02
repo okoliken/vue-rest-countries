@@ -1,5 +1,5 @@
 <template>
-  <div class="country" v-for="country in resp" :key="country.area">
+  <div class="country">
     <div class="country__flag__con">
       <img :src="country.flags.png" alt="not found" class="country__flag" />
     </div>
@@ -19,24 +19,10 @@
 </template>
 
 <script>
-import axios from "axios";
-import { ref } from "@vue/reactivity";
-
-const getAllCountry = async () => {
-  try {
-    const request = await axios.get("https://restcountries.com/v3.1/all");
-    const data = await request.data;
-    return data;
-  } catch (error) {
-    console.log(error);
-  }
-};
 export default {
   name: "CountryComponent",
-  async setup() {
-    const resp = ref(await getAllCountry());
-
-    return { resp };
+  props: {
+    country: Object,
   },
 };
 </script>

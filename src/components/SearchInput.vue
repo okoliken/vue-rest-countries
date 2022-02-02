@@ -2,15 +2,15 @@
   <div class="flex-country-input">
     <div class="country__search_con">
       <input
-        type="search"
-        name=""
-        id=""
+        type="text"
+        @input="$emit('update:search', $event.target.value)"
         class="country__search__input"
         placeholder="Search for a country..."
+        :value="search"
       />
       <img src="../assets/search.png" alt="" class="country__search__icon" />
     </div>
-    <CheckBoxVue />
+    <CheckBoxVue @input="$emit('update:filterregion', $event.target.value)" />
   </div>
 </template>
 
@@ -22,6 +22,11 @@ export default {
   components: {
     CheckBoxVue,
   },
+  props: {
+    search: String,
+    filterregion: String,
+  },
+  emits: ["update:search", "update:filterregion"],
 };
 </script>
 

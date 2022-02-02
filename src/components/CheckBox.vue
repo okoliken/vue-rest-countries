@@ -1,15 +1,16 @@
 <template>
   <select class="country-form-select">
-    <option disabled selected>Filter by Region</option>
-    <option value="1">One</option>
-    <option value="2">Two</option>
-    <option value="3">Three</option>
+    <option selected>Filter by Region</option>
+    <option v-for="(region, index) in countrydata" :key="index" :value="region">
+      {{ region }}
+    </option>
   </select>
 </template>
 
 <script>
 export default {
   name: "CheckBox",
+  inject: ["countrydata"],
 };
 </script>
 
