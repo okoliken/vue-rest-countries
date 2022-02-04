@@ -12,7 +12,7 @@
         Region: <span>{{ country.region }}</span>
       </p>
       <p class="country__capital">
-        Capital: <span>{{ country.capital }}</span>
+        Capital: <span>{{ country.capital[0] }}</span>
       </p>
     </div>
   </div>
@@ -45,7 +45,7 @@ export default {
     }
   }
   .country__details {
-    padding: 8px;
+    padding: 15px;
     .country__name {
       font-weight: bold;
       font-size: 20px;

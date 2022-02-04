@@ -18,6 +18,7 @@
       :key="index"
     />
   </transition-group>
+  <div v-if="filterCountry.length === 0">No country found</div>
 </template>
 
 <script>
